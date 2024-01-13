@@ -25,6 +25,22 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/QuoteView.vue')
     },
+    {
+      path: '/Quote2',
+      name: 'quote2',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/Quote2.vue')
+    },
+    {
+      path: '/Quote3',
+      name: 'quote3',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/Quote3.vue')
+    },
   ]
 })
 
