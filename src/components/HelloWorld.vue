@@ -1,44 +1,19 @@
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
-</script>
-
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
-  </div>
+  <v-app>
+    <default-system-bar @click:toggle="drawer = !drawer" />
+    <default-drawer v-model="drawer" />
+    <default-view />
+  </v-app>
 </template>
 
-<style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-}
+<script lang="ts" setup>
+// Components
+import DefaultDrawer from './Drawer.vue'
+import DefaultSystemBar from './SystemBar.vue'
+import DefaultView from './View.vue'
 
-h3 {
-  font-size: 1.2rem;
-}
+// Utilities
+import { shallowRef } from 'vue'
 
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
-</style>
+const drawer = shallowRef<boolean | null>(null)
+</script>

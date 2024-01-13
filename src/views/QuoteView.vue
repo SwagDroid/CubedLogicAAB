@@ -1,94 +1,155 @@
 <template>
-  <!-- Happy Coding -->
-  <!-- <div class="p-3" style="max-width: 400px; margin: 50px auto; background: #234"> -->
-    <div class="p-3" >
-    
-    <!-- Calculator Result -->
-    <div class="w-full rounded m-1 p-3 text-right lead font-weight-bold text-white bg-vue-dark">
-      {{ calculatorValue || 0 }}
-    </div>
+  <v-form>
+    <v-container>
+      <v-row>
+<v-col cols="12" sm="6" > <v-text-field label="Your product or service" model-value="Grocery delivery" hint="For example, flowers or used cars" ></v-text-field> </v-col>
+<v-col cols="12" sm="6" ><v-text-field label="Your landing page" hint="www.example.com/page" persistent-hint></v-text-field></v-col>
 
-    <!-- Calculator buttons -->
-    <div class="row no-gutters">
-      <div class="col-3" v-for="n in calculatorElements" :key="n">
-        <div class="lead text-white text-center m-1 py-3 bg-vue-dark rounded hover-class"
-          :class="{'bg-vue-green': ['C','*','/','-','+','%','='].includes(n)}"
-          @click="action(n)"
+<v-col
+cols="12"
+sm="6"
+>
+          <v-text-field
+            label="Your product or service"
+            model-value="Grocery delivery"
+            hint="For example, flowers or used cars"
+            variant="solo"
+          ></v-text-field>
+        </v-col>
+
+        <v-col
+          cols="12"
+          sm="6"
         >
-          {{n}}
-        </div>
-      </div>
-    </div>
+          <v-text-field
+            label="Your landing page"
+            hint="www.example.com/page"
+            persistent-hint
+            variant="solo"
+          ></v-text-field>
+        </v-col>
 
-  </div>
+        <v-col
+          cols="12"
+          sm="6"
+        >
+          <v-text-field
+            label="Your product or service"
+            model-value="Grocery delivery"
+            hint="For example, flowers or used cars"
+            variant="outlined"
+          ></v-text-field>
+        </v-col>
+
+        <v-col
+          cols="12"
+          sm="6"
+        >
+          <v-text-field
+            label="Your landing page"
+            hint="www.example.com/page"
+            persistent-hint
+            variant="outlined"
+          ></v-text-field>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-form>
+  <v-row>
+      <v-col cols="4">
+        <v-list-subheader>Prefix for dollar currency</v-list-subheader>
+      </v-col>
+
+      <v-col cols="8">
+        <v-text-field
+          label="Amount"
+          model-value="10.00"
+          prefix="$"
+        ></v-text-field>
+      </v-col>
+    </v-row>
 </template>
 
+<!-- <template>
+  <v-form v-model="valid">
+    <v-container>
+      <v-row>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            v-model="firstname"
+            :rules="nameRules"
+            :counter="10"
+            label="First name"
+            required
+            hide-details
+          ></v-text-field>
+        </v-col>
+
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            v-model="lastname"
+            :rules="nameRules"
+            :counter="10"
+            label="Last name"
+            hide-details
+            required
+          ></v-text-field>
+        </v-col>
+
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            v-model="email"
+            :rules="emailRules"
+            label="E-mail"
+            hide-details
+            required
+          ></v-text-field>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-form>
+</template>
 <script>
-export default {
-  name: 'Calculator',
-  props: {
-    msg: String
-  },
+  export default {
+    data: () => ({
+      valid: false,
+      firstname: '',
+      lastname: '',
+      nameRules: [
+        value => {
+          if (value) return true
+          return 'Name is required.'
+        },
+        value => {
+          if (value?.length <= 10) return true
 
-  data() {
-    return {
-      calculatorValue: '',
-      calculatorElements: ['C','*','/','-',7,8,9,'+',4,5,6,'%',1,2,3,'=',0,'.'],
-      operator: null,
-      previousCalculatorValue: '',
-    }
-  },
+          return 'Name must be less than 10 characters.'
+        },
+      ],
+      email: '',
+      emailRules: [
+        value => {
+          if (value) return true
 
-  methods: {
-    action(n){
+          return 'E-mail is requred.'
+        },
+        value => {
+          if (/.+@.+\..+/.test(value)) return true
 
-      /* Append value */
-      if(!isNaN(n) || n === '.'){
-        this.calculatorValue += n + '';
-      }
-
-      /* Clear value */
-      if(n === 'C'){
-        this.calculatorValue = '';
-      }
-
-      /* Percentage */
-      if(n === '%'){
-        this.calculatorValue = this.calculatorValue / 100 + '';
-      }
-
-      /* Operators */
-      if(['/','*','-','+'].includes(n)){
-        this.operator = n;
-        this.previousCalculatorValue = this.calculatorValue;
-        this.calculatorValue = '';
-      }
-
-      /* Calculate result using the eval function */
-      if(n === '='){
-        this.calculatorValue = eval(
-          this.previousCalculatorValue + this.operator + this.calculatorValue
-        );
-        this.previousCalculatorValue = '';
-        this.operator = null;
-      }
-
-
-    }
+          return 'E-mail must be valid.'
+        },
+      ],
+    }),
   }
-}
-</script>
+</script> -->
 
-
-<style scoped>
-  .bg-vue-dark {
-    background: #31475e;
-  }
-  .hover-class:hover {
-    cursor: pointer;
-    background: #3D5875;
-  }
-  .bg-vue-green {
-    background: #3fb984;
-  }
-</style>
+ 
