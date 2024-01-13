@@ -28,3 +28,9 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+
+# amplify
+node_modules
+.amplify
+amplifyconfiguration*
